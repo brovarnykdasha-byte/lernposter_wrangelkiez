@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wrangelkiez – Digitales Lernposter</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --cream: #f5f0e8;
+      --cream-dark: #ebe4d6;
+      --brown-dark: #3d2b1f;
+      --brown-light: #8b6f5e;
+      --rust: #b85c38;
+      --rust-light: #c97b5e;
+      --gold: #c4943d;
+      --teal: #4a7c6f;
+      --teal-dark: #2d5a4e;
+      --sage: #6b8f71;
+      --warm-gray: #9a8e82;
+      --light-border: #d4c9b8;
+    }
+
+    body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      background-color: var(--cream);
+      color: var(--brown-dark);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', Georgia, serif;
+      line-height: 1.2;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ===== HEADER ===== */
+    .top-bar {
+      height: 6px;
+      background: linear-gradient(to right, var(--rust), var(--rust-light), var(--gold));
+    }
+
+    .header-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .header-nav span {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      font-weight: 500;
+    }
+
+    .header-nav .dot { color: var(--light-border); }
+
+    .header-line {
+      height: 2px;
+      background: linear-gradient(to right, var(--rust), var(--rust-light), var(--gold));
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      text-align: center;
+      padding: 48px 0 32px;
+    }
+
+    .hero-label {
+      font-size: 0.8rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--rust);
+      font-weight: 600;
+      margin-bottom: 16px;
+      font-family: 'Source Sans 3', sans-serif;
+    }
+
+    .hero h1 {
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      font-weight: 900;
+      line-height: 1;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 .accent {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero .subtitle {
+      font-size: 1.15rem;
+      color: var(--warm-gray);
+      font-style: italic;
+      font-family: 'Playfair Display', serif;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 40px;
+    }
+
+    .divider-line {
+      flex: 1;
+      max-width: 280px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, var(--light-border));
+    }
+
+    .divider-line.right {
+      background: linear-gradient(to left, transparent, var(--light-border));
+    }
+
+    .divider-diamond {
+      width: 12px;
+      height: 12px;
+      background: var(--gold);
+      transform: rotate(45deg);
+      margin: 0 16px;
+    }
+
+    /* ===== GRID LAYOUT ===== */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-2 { grid-template-columns: 1fr; }
+    }
+
+    /* ===== CARDS ===== */
+    .card {
+      background: rgba(255,255,255,0.6);
+      border: 1px solid var(--light-border);
+      border-radius: 2px;
+      padding: 32px;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-label h3 {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--brown-light);
+      font-weight: 600;
+      font-family: 'Source Sans 3', sans-serif;
+      white-space: nowrap;
+    }
+
+    .section-label .line {
+      flex: 1;
+      height: 1px;
+      background: var(--light-border);
+    }
+
+    .card h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    /* ===== MAP ===== */
+    .map-container {
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid var(--light-border);
+      margin-bottom: 20px;
+    }
+
+    .map-container iframe {
+      width: 100%;
+      height: 320px;
+      border: 0;
+    }
+
+    /* ===== TAGS ===== */
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+
+    .tag {
+      padding: 6px 12px;
+      border: 1px solid var(--light-border);
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--brown-light);
+      border-radius: 2px;
+    }
+
+    .tag-rust {
+      border-color: rgba(184, 92, 56, 0.4);
+      color: var(--rust);
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline { display: flex; flex-direction: column; gap: 20px; }
+
+    .timeline-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .timeline-year {
+      width: 56px;
+      flex-shrink: 0;
+      text-align: right;
+      font-family: 'Playfair Display', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--rust);
+      padding-top: 2px;
+    }
+
+    .timeline-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .dot-rust { background: var(--rust); }
+    .dot-gold { background: var(--gold); }
+    .dot-teal { background: var(--teal); }
+    .dot-sage { background: var(--sage); }
+
+    .timeline-text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(61, 43, 31, 0.85);
+    }
+
+    .timeline-text strong { color: var(--brown-dark); }
+
+    /* ===== FEATURES ===== */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 24px;
+    }
+
+    @media (max-width: 600px) {
+      .feature-grid { grid-template-columns: 1fr; }
+    }
+
+    .feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--cream-dark);
+      border: 1px solid var(--light-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .feature h4 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    .feature p {
+      font-size: 0.85rem;
+      color: var(--brown-light);
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    /* ===== QUOTE ===== */
+    .quote {
+      border-left: 4px solid rgba(196, 148, 61, 0.6);
+      padding: 8px 0 8px 20px;
+      background: rgba(235, 228, 214, 0.4);
+      border-radius: 0 2px 2px 0;
+    }
+
+    .quote p {
+      font-size: 0.95rem;
+      font-style: italic;
+      color: var(--brown-light);
+      line-height: 1.6;
+    }
+
+    .quote .source {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--warm-gray);
+      font-weight: 600;
+      font-style: normal;
+      margin-top: 8px;
+    }
+
+    /* ===== USAGE TAGS ===== */
+    .usage-tags { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
+
+    .usage-tag {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(235, 228, 214, 0.4);
+      border: 1px solid rgba(212, 201, 184, 0.6);
+      border-radius: 2px;
+      padding: 10px 16px;
+    }
+
+    .usage-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .usage-tag strong {
+      font-size: 0.95rem;
+      color: var(--brown-dark);
+    }
+
+    .usage-tag .detail {
+      font-size: 0.85rem;
+      color: var(--brown-light);
+    }
+
+    .usage-tag .sep { color: var(--warm-gray); }
+
+    /* ===== BAR CHART ===== */
+    .bar-container {
+      display: flex;
+      height: 28px;
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 12px;
+    }
+
+    .bar-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 4px 16px;
+      font-size: 0.75rem;
+      color: var(--brown-light);
+    }
+
+    /* ===== STATS ===== */
+    .stats-box {
+      margin-top: 20px;
+      background: rgba(235, 228, 214, 0.5);
+      border: 1px solid var(--light-border);
+      border-radius: 2px;
+      padding: 16px;
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--rust);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--brown-light);
+      margin-top: 2px;
+    }
+
+    /* ===== CONFLICT ===== */
+    .card-full {
+      margin-top: 24px;
+    }
+
+    .section-label.rust h3 { color: var(--rust); }
+
+    .conflict-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+    }
+
+    @media (max-width: 900px) {
+      .conflict-grid { grid-template-columns: 1fr; }
+    }
+
+    .conflict-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--rust);
+      margin-bottom: 16px;
+    }
+
+    .text-body {
+      font-size: 0.95rem;
+      line-height: 1.65;
+      color: rgba(61, 43, 31, 0.85);
+      margin-bottom: 16px;
+    }
+
+    .text-body strong { color: var(--brown-dark); }
+
+    /* ===== IMPACT BARS ===== */
+    .impact-bars { display: flex; flex-direction: column; gap: 16px; margin-bottom: 24px; }
+
+    .impact-bar {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .impact-label {
+      width: 120px;
+      flex-shrink: 0;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--brown-dark);
+    }
+
+    .impact-track {
+      flex: 1;
+      height: 12px;
+      background: var(--cream-dark);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .impact-fill {
+      height: 100%;
+      background: linear-gradient(to right, var(--rust), var(--rust-light));
+      border-radius: 99px;
+    }
+
+    .impact-status {
+      width: 48px;
+      text-align: right;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--brown-light);
+    }
+
+    /* ===== DEFINITION BOX ===== */
+    .def-box {
+      background: rgba(235, 228, 214, 0.5);
+      border: 1px solid var(--light-border);
+      border-radius: 2px;
+      padding: 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .def-box .def-text { color: var(--rust); }
+
+    .initiative-box {
+      margin-top: 16px;
+      background: rgba(74, 124, 111, 0.05);
+      border: 1px solid rgba(74, 124, 111, 0.3);
+      border-radius: 2px;
+      padding: 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .initiative-box strong { color: var(--teal-dark); }
+    .initiative-box span { color: rgba(61, 43, 31, 0.8); }
+
+    /* ===== IMAGES ===== */
+    .image-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 700px) {
+      .image-grid { grid-template-columns: 1fr; }
+    }
+
+    .image-card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--light-border);
+    }
+
+    .image-card figcaption {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--warm-gray);
+      margin-top: 8px;
+    }
+
+    /* ===== LANDMARKS ===== */
+    .landmarks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 900px) {
+      .landmarks-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 600px) {
+      .landmarks-grid { grid-template-columns: 1fr; }
+    }
+
+    .landmark {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      background: rgba(235, 228, 214, 0.4);
+      border: 1px solid rgba(212, 201, 184, 0.6);
+      border-radius: 2px;
+      padding: 12px 16px;
+    }
+
+    .landmark-icon { font-size: 1.25rem; margin-top: 2px; }
+
+    .landmark h4 {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--brown-dark);
+    }
+
+    .landmark p {
+      font-size: 0.75rem;
+      color: var(--brown-light);
+      line-height: 1.4;
+      margin-top: 2px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      border-top: 1px solid var(--light-border);
+      margin-top: 48px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 24px;
+      padding: 32px 0;
+      flex-wrap: wrap;
+    }
+
+    .footer-inner .credits { font-size: 0.85rem; color: var(--warm-gray); }
+
+    .footer-badge {
+      border: 1px solid var(--light-border);
+      padding: 8px 16px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--brown-light);
+    }
+
+    .footer-sources {
+      font-size: 0.85rem;
+      color: var(--warm-gray);
+      text-align: right;
+    }
+
+    .footer-bar {
+      margin-top: 24px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(212, 201, 184, 0.5);
+    }
+
+    .footer-gradient {
+      height: 4px;
+      background: linear-gradient(to right, var(--rust), var(--gold), var(--teal));
+      border-radius: 99px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ===== TOP BAR ===== -->
+  <div class="top-bar"></div>
+
+  <!-- ===== HEADER ===== -->
+  <div class="container">
+    <div class="header-nav">
+      <div>
+        <span>Kiez-Steckbrief</span>
+        <span class="dot"> · </span>
+        <span>Berliner Kieze</span>
+      </div>
+      <div>
+        <span>Kreuzberg</span>
+        <span class="dot"> · </span>
+        <span>Berlin</span>
+      </div>
+    </div>
+    <div class="header-line"></div>
+  </div>
+
+  <!-- ===== HERO ===== -->
+  <div class="container">
+    <section class="hero">
+      <p class="hero-label">Digitales Lernposter</p>
+      <h1>Wrangel<span class="accent">kiez</span></h1>
+      <p class="subtitle">Vom Arbeiterviertel zum multikulturellen Szeneviertel – ein Berliner Kiez im Wandel</p>
+      <div class="divider">
+        <div class="divider-line"></div>
+        <div class="divider-diamond"></div>
+        <div class="divider-line right"></div>
+      </div>
+    </section>
+  </div>
+
+  <div class="container">
+
+    <!-- ===== LOCATION & HISTORY ===== -->
+    <div class="grid-2">
+
+      <!-- Location Card -->
+      <div class="card">
+        <div class="section-label">
+          <h3>Lage in Kreuzberg</h3>
+          <div class="line"></div>
+        </div>
+        <div class="map-container">
+          <iframe
+            title="Wrangelkiez Karte"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=13.430%2C52.494%2C13.460%2C52.504&layer=mapnik&marker=52.498%2C13.445"
+          ></iframe>
+        </div>
+        <div class="tags">
+          <span class="tag">Bezirk: Friedrichshain-Kreuzberg</span>
+          <span class="tag">Ortsteil: Kreuzberg</span>
+          <span class="tag">Fläche: 45 Hektar</span>
+          <span class="tag">~12.400 Einwohner</span>
+        </div>
+      </div>
+
+      <!-- History Card -->
+      <div class="card">
+        <div class="section-label">
+          <h3>Historische Entwicklung</h3>
+          <div class="line"></div>
+        </div>
+        <h2>Vom Schlesischen Viertel zum Szeneviertel</h2>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-year">1858</div>
+            <div class="timeline-dot dot-rust"></div>
+            <div class="timeline-text">Erschließung nach dem <strong>Hobrechtplan</strong> – das „Köpenicker Feld" wird bebaut. Gründerzeithäuser für Arbeiter und Zuwanderer entstehen.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1866</div>
+            <div class="timeline-dot dot-rust"></div>
+            <div class="timeline-text">Eröffnung der <strong>Görlitzer Bahn</strong> – der Bahnhof bringt Zuwanderer, die in der Umgebung Arbeit und Wohnung suchen.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1960er</div>
+            <div class="timeline-dot dot-gold"></div>
+            <div class="timeline-text"><strong>Gastarbeiter aus der Türkei</strong> prägen das Viertel. Integration wird als gemeinschaftliche Aufgabe gelebt.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1980er</div>
+            <div class="timeline-dot dot-gold"></div>
+            <div class="timeline-text"><strong>Hausbesetzungen</strong> und IBA-Projekte. Stadterneuerungsprogramme verbessern die Bausubstanz. „Bonjour Tristesse" entsteht.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">1989</div>
+            <div class="timeline-dot dot-teal"></div>
+            <div class="timeline-text">Nach dem <strong>Mauerfall</strong>: Das Viertel verliert seine Randlage. Umbruch und Wandel setzen ein.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">2000er</div>
+            <div class="timeline-dot dot-teal"></div>
+            <div class="timeline-text">Ansiedlung von <strong>Clubs, Bars und Künstleragenturen</strong>. Das Gebiet wird zum Szeneviertel.</div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-year">Heute</div>
+            <div class="timeline-dot dot-sage"></div>
+            <div class="timeline-text">Multikultureller Kiez mit starkem <strong>Gentrifizierungsdruck</strong> – Initiativen wie „Bizim Kiez" kämpfen gegen Verdrängung.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CHARACTERISTICS & USAGE ===== -->
+    <div class="grid-2">
+
+      <!-- Characteristics -->
+      <div class="card">
+        <div class="section-label">
+          <h3>Charakteristika</h3>
+          <div class="line"></div>
+        </div>
+        <h2>Was macht den Kiez aus?</h2>
+        <div class="feature-grid">
+          <div class="feature">
+            <div class="feature-icon">🏘️</div>
+            <div>
+              <h4>Gründerzeithäuser</h4>
+              <p>Dichte Blockbebauung aus dem späten 19. Jhd., gut erhalten dank Stadterneuerung.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🌍</div>
+            <div>
+              <h4>Multikulti-Viertel</h4>
+              <p>65% Migrationshintergrund, geprägt durch türkische Gemeinschaft und internationale Vielfalt.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🎶</div>
+            <div>
+              <h4>Clubs &amp; Bars</h4>
+              <p>Rund um die Schlesische Straße: Szeneviertel mit Nachtleben und Künstleragenturen.</p>
+            </div>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">🌳</div>
+            <div>
+              <h4>Görlitzer Park</h4>
+              <p>Großer Stadtpark auf dem Gelände des ehemaligen Görlitzer Bahnhofs – Freizeitoase im Kiez.</p>
+            </div>
+          </div>
+        </div>
+        <div class="quote">
+          <p>„Im Wrangelkiez lebten bis 1990 viele Menschen, die bewusst in diesen als abgelegen empfundenen Teil West-Berlins zogen, in dem es ausgeprägte soziale Netze gab."</p>
+          <p class="source">— Wikipedia</p>
+        </div>
+      </div>
+
+      <!-- Usage & Mix -->
+      <div class="card">
+        <div class="section-label">
+          <h3>Aktuelle Nutzung &amp; Mischung</h3>
+          <div class="line"></div>
+        </div>
+        <h2>Leben, Arbeiten, Kultur im Kiez</h2>
+        <p class="text-body" style="margin-bottom:20px">
+          Der Wrangelkiez vereint <strong>Wohnen, Gastronomie und Subkultur</strong> auf engstem Raum.
+          Mit 65% Migrationshintergrund ist er eines der <strong>vielfältigsten Quartiere</strong> Berlins.
+        </p>
+        <div class="usage-tags">
+          <div class="usage-tag">
+            <div class="usage-dot" style="background:var(--teal)"></div>
+            <strong>Wohnen</strong>
+            <span class="sep">:</span>
+            <span class="detail">Gründerzeitwohnungen, Altbau, sozialer Wohnungsbau</span>
+          </div>
+          <div class="usage-tag">
+            <div class="usage-dot" style="background:var(--gold)"></div>
+            <strong>Gastronomie</strong>
+            <span class="sep">:</span>
+            <span class="detail">Falafel-Imbisse, Cafés, Bars, Spätis</span>
+          </div>
+          <div class="usage-tag">
+            <div class="usage-dot" style="background:var(--rust)"></div>
+            <strong>Subkultur</strong>
+            <span class="sep">:</span>
+            <span class="detail">Clubs, Street Art, Künstlerateliers</span>
+          </div>
+          <div class="usage-tag">
+            <div class="usage-dot" style="background:var(--brown-dark)"></div>
+            <strong>Gewerbe</strong>
+            <span class="sep">:</span>
+            <span class="detail">Kleingewerbe, türkische Läden, Bioläden</span>
+          </div>
+          <div class="usage-tag">
+            <div class="usage-dot" style="background:var(--warm-gray)"></div>
+            <strong>Freizeit</strong>
+            <span class="sep">:</span>
+            <span class="detail">Görlitzer Park, Spree-Ufer, Spielplätze</span>
+          </div>
+        </div>
+
+        <div class="section-label">
+          <h3>Nutzungsschwerpunkte (geschätzt)</h3>
+          <div class="line"></div>
+        </div>
+        <div class="bar-container">
+          <div style="width:35%;background:var(--teal)"></div>
+          <div style="width:25%;background:var(--gold)"></div>
+          <div style="width:18%;background:var(--rust)"></div>
+          <div style="width:12%;background:var(--brown-dark)"></div>
+          <div style="width:10%;background:var(--warm-gray)"></div>
+        </div>
+        <div class="bar-legend">
+          <span>■ <strong style="color:var(--teal)">Wohnen 35%</strong></span>
+          <span>■ <strong style="color:var(--gold)">Gastro 25%</strong></span>
+          <span>■ <strong style="color:var(--rust)">Subkultur 18%</strong></span>
+          <span>■ <strong>Gewerbe 12%</strong></span>
+          <span style="color:var(--warm-gray)">■ Sonstiges 10%</span>
+        </div>
+
+        <div class="stats-box">
+          <div class="section-label" style="margin-bottom:12px">
+            <h3>Bevölkerungsstruktur</h3>
+            <div class="line"></div>
+          </div>
+          <div class="stats-grid">
+            <div>
+              <div class="stat-value">34,2%</div>
+              <div class="stat-label">18–35 Jahre</div>
+            </div>
+            <div>
+              <div class="stat-value">~40%</div>
+              <div class="stat-label">Ausländeranteil</div>
+            </div>
+            <div>
+              <div class="stat-value">65%</div>
+              <div class="stat-label">Migrationshintergrund</div>
+            </div>
+            <div>
+              <div class="stat-value">35,8%</div>
+              <div class="stat-label">Türkischstämmig</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== CONFLICT & PROBLEM ===== -->
+    <div class="card card-full">
+      <div class="section-label rust">
+        <h3>Konflikt &amp; Problem</h3>
+        <div class="line"></div>
+      </div>
+      <div class="conflict-grid">
+        <div>
+          <h2 class="conflict-title">Gentrifizierung &amp; Verdrängung im Wrangelkiez</h2>
+          <p class="text-body">
+            Der Wrangelkiez ist <strong>Untersuchungsgegenstand mehrerer wissenschaftlicher Studien</strong> zur Gentrifizierung. 
+            Ursprünglich ein multikulturelles Arbeiterviertel, wandelt sich der Kiez seit der Jahrtausendwende rasant: 
+            Steigende Mieten, der Zuzug wohlhabender Neuberliner und die Ansiedlung von Szene-Gastronomie 
+            verdrängen die alteingesessene Bevölkerung.
+          </p>
+          <p class="text-body">
+            2015 gründeten Anwohner die Initiative <strong>„Bizim Kiez"</strong>, nachdem dem türkischen 
+            Gemüseladen „Bizim Bakkal" in der Wrangelstraße 77 die Kündigung drohte. 
+            Der Protest war erfolgreich – doch der Verdrängungsdruck hält an: 
+            Von der Buchhandlung über den Bäcker bis hin zur Gemeinschaftspraxis verschwinden gewachsene Strukturen.
+          </p>
+          <div class="tags">
+            <span class="tag tag-rust">Mietpreise</span>
+            <span class="tag tag-rust">Verdrängung</span>
+            <span class="tag tag-rust">Bizim Kiez</span>
+            <span class="tag tag-rust">Strukturwandel</span>
+            <span class="tag tag-rust">Autofreier Kiez</span>
+          </div>
+        </div>
+        <div>
+          <h2 style="font-size:1.25rem;margin-bottom:12px">Warum ist das ein Problem?</h2>
+          <p class="text-body">
+            Günstige Mietwohnungen verschwinden, soziale Einrichtungen und gewachsene Nachbarschaftsstrukturen 
+            gehen verloren. Einkommensschwache Haushalte – insbesondere Familien mit Migrationshintergrund – 
+            können sich die gestiegenen Mieten nicht mehr leisten. Die kulturelle Vielfalt des Kiezes ist bedroht.
+          </p>
+          <div class="impact-bars">
+            <div class="impact-bar">
+              <span class="impact-label">Mietsteigerung</span>
+              <div class="impact-track"><div class="impact-fill" style="width:85%"></div></div>
+              <span class="impact-status">hoch</span>
+            </div>
+            <div class="impact-bar">
+              <span class="impact-label">Verdrängung</span>
+              <div class="impact-track"><div class="impact-fill" style="width:78%"></div></div>
+              <span class="impact-status">stark</span>
+            </div>
+            <div class="impact-bar">
+              <span class="impact-label">Tourismus</span>
+              <div class="impact-track"><div class="impact-fill" style="width:65%"></div></div>
+              <span class="impact-status">mittel</span>
+            </div>
+            <div class="impact-bar">
+              <span class="impact-label">Gewerbe-Wandel</span>
+              <div class="impact-track"><div class="impact-fill" style="width:72%"></div></div>
+              <span class="impact-status">stark</span>
+            </div>
+          </div>
+          <div class="def-box">
+            <strong>Begriff:</strong>
+            <span class="def-text">Gentrifizierung = Aufwertung eines Stadtviertels durch wohlhabendere Bevölkerungsgruppen, 
+            verbunden mit Verdrängung ärmerer Bewohner*innen.</span>
+          </div>
+          <div class="initiative-box">
+            <strong>Initiative „Bizim Kiez":</strong>
+            <span>Seit 2015 setzt sich die Nachbarschaftsinitiative für den Erhalt der sozialen Infrastruktur ein – 
+            durch Protest, Beratung und Klagen gegen Verdrängung von Gewerbetreibenden.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== IMAGES ===== -->
+    <div style="margin-top:24px">
+      <div class="section-label">
+        <h3>Bilder</h3>
+        <div class="line"></div>
+      </div>
+      <div class="image-grid">
+        <figure class="image-card">
+          <img src="wrangelkiez-map.jpg" alt="Lage des Wrangelkiezes in Berlin">
+          <figcaption>Lage des Wrangelkiezes in Berlin</figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="wrangelstrasse.jpg" alt="Typische Straßenszene im Wrangelkiez">
+          <figcaption>Typische Straßenszene im Wrangelkiez</figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="goerlitzer-park.jpg" alt="Görlitzer Park – grüne Oase im Kiez">
+          <figcaption>Görlitzer Park – grüne Oase im Kiez</figcaption>
+        </figure>
+        <figure class="image-card">
+          <img src="oberbaumbruecke.jpg" alt="Oberbaumbrücke – Wahrzeichen am Kiezrand">
+          <figcaption>Oberbaumbrücke – Wahrzeichen am Kiezrand</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <!-- ===== LANDMARKS ===== -->
+    <div class="card" style="margin-top:24px">
+      <div class="section-label">
+        <h3>Sehenswürdigkeiten &amp; Orientierungspunkte</h3>
+        <div class="line"></div>
+      </div>
+      <div class="landmarks-grid">
+        <div class="landmark">
+          <span class="landmark-icon">🌉</span>
+          <div>
+            <h4>Oberbaumbrücke</h4>
+            <p>Ikonische Brücke über die Spree nach Friedrichshain</p>
+          </div>
+        </div>
+        <div class="landmark">
+          <span class="landmark-icon">🚇</span>
+          <div>
+            <h4>U-Bhf Schlesisches Tor</h4>
+            <p>Hochbahnhof von 1902, berühmt durch Musical „Linie 1"</p>
+          </div>
+        </div>
+        <div class="landmark">
+          <span class="landmark-icon">🌳</span>
+          <div>
+            <h4>Görlitzer Park</h4>
+            <p>Auf dem Gelände des ehemaligen Görlitzer Bahnhofs</p>
+          </div>
+        </div>
+        <div class="landmark">
+          <span class="landmark-icon">⛪</span>
+          <div>
+            <h4>Taborkirche</h4>
+            <p>Evangelische Kirche von 1905 in der Taborstraße</p>
+          </div>
+        </div>
+        <div class="landmark">
+          <span class="landmark-icon">🏛️</span>
+          <div>
+            <h4>„Bonjour Tristesse"</h4>
+            <p>IBA-Bau von Pritzker-Preisträger Álvaro Siza Vieira</p>
+          </div>
+        </div>
+        <div class="landmark">
+          <span class="landmark-icon">🎨</span>
+          <div>
+            <h4>Cuvry-Brache</h4>
+            <p>Ehemaliger Standort berühmter Street-Art von Blu &amp; JR</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end container -->
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="container">
+      <div class="footer-inner">
+        <div class="credits">Digitales Lernposter</div>
+        <div class="footer-badge">Kiez-Steckbrief</div>
+        <div class="footer-sources">Quellen: Wikipedia, taz, Bizim Kiez, Quartiersmanagement Wrangelkiez</div>
+      </div>
+      <div class="footer-bar">
+        <div class="footer-gradient"></div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
